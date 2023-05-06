@@ -61,7 +61,6 @@ def generate_calendar(config, user, until):
     highest_date = highest_activity.index[0]
 
     # draw it with calplot
-    plt.figure(figsize=(16, 10), dpi=200)
     calplot.calplot(
         df["activity"],
         dropzero=True,
