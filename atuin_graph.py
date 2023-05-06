@@ -15,10 +15,7 @@ parser.add_argument(
     "--until",
     help="optional - day (yyyy-mm-dd) to query until, used for gif generation",
 )
-parser.add_argument(
-    "--atuin_server_config",
-    help="optional - atuin server config path"
-)
+parser.add_argument("--atuin_server_config", help="optional - atuin server config path")
 args = parser.parse_args()
 
 if args.atuin_server_config:
