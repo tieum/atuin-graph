@@ -6,6 +6,8 @@ activity graph for atuin self hosted sync server
 Both scripts use the same code from `generate_calendar.py`  
 It connects to the PostgreSQL atuin database, using by default the `db_uri` setting from atuin `server.toml` config file
 
+Required Python version: >= 3.11 (uses the [tomllib parser](https://docs.python.org/3/library/tomllib.html))
+
 ## standalone
 ***- `atuin-graph.py`***: standalone script, takes a username as input and creates a `user.png` file
 
