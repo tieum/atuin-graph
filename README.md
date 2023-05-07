@@ -1,5 +1,5 @@
 # atuin-graph
-activity graph for atuin self hosted sync server
+activity graph for [atuin](https://atuin.sh) self hosted sync server
 
 <img src="./img/shell.history.gif">
 
