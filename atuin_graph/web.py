@@ -5,16 +5,15 @@ import os
 from io import BytesIO
 from flask import Flask, send_file
 import matplotlib.pyplot as plt
-from generate_calendar import generate_calendar
+from atuin_graph.generate_calendar import generate_calendar
 
 app = Flask(__name__)
-
 config = os.environ["HOME"] + "/.config/atuin/server.toml"
 
 
 @app.route("/<user>", defaults={"date": None})
 @app.route("/<user>/<date>")
-def dynamic_page(user, date=None):
+def serve_png(user, date=None):
     """return a png for a user and an optional date"""
     if generate_calendar(config, user, date):
         img = BytesIO()

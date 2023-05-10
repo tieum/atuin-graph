@@ -1,12 +1,16 @@
+"""
+generate_calendar.py: function generating the calendar
+"""
 import tomllib
-import calplot
 import matplotlib.pyplot as plt
+import calplot
 import numpy as np
 import pandas as pd
 from sqlalchemy import create_engine
 
 
 def generate_calendar(config, user, until):
+    """get the data from pg and generate the calendar"""
     with open(config, "rb") as f:
         serverconf = tomllib.load(f)
 
