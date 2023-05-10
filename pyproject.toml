@@ -1,6 +1,6 @@
 [project]
 name = "atuin-graph"
-version = "1.0.0"
+version = "1.0.1"
 description = "activity graph for atuin"
 authors = [
     {author = "Matthieu Simon", email = "matthieu@bluegreen.sh"},

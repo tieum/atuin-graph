@@ -1,7 +1,7 @@
 # atuin-graph
 activity graph for [atuin](https://atuin.sh) self hosted sync server
 
-<img src="./img/shell.history.gif">
+<img src="https://github.com/tieum/atuin-graph/raw/main/img/shell.history.gif">
 
 It connects to the PostgreSQL atuin database, using by default the `db_uri` setting from atuin `server.toml` config file
 
