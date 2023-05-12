@@ -1,0 +1,17 @@
+name: Lint with Ruff
+
+on:
+  push:
+
+jobs:
+  ruff:
+    name: Lint code with Ruff
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - run: pip install ruff
+      - run: ruff --format=github --target-version=py37 .
