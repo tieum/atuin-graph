@@ -1,0 +1,29 @@
+name: Upload Python Package
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  PyPI:
+    runs-on: ubuntu-latest
+    environment: 
+      name: release 
+      url: https://pypi.org/p/atuin-graph/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install pip-tools
+          pip-compile -o requirements.txt pyproject.toml
+          pip-sync
+      - name: Build package
+        run: python -m build
+      - name: Publish package
+        uses: pypa/gh-action-pypi-publish@v1.8.6

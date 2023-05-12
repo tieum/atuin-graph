@@ -1,7 +1,7 @@
 [project]
 name = "atuin-graph"
-version = "1.0.1"
 description = "activity graph for atuin"
+dynamic = ["version"]
 authors = [
     {author = "Matthieu Simon", email = "matthieu@bluegreen.sh"},
 ]
@@ -14,8 +14,11 @@ requires-python = ">= 3.11"
 atuin-graph = "atuin_graph.cli:main"
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
 
 [tool.rye]
 managed = true
