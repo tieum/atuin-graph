@@ -11,11 +11,13 @@ app = Flask(__name__)
 config = os.environ["HOME"] + "/.config/atuin/server.toml"
 
 
-@app.route("/<user>", defaults={"date": None})
-@app.route("/<user>/<date>")
-def serve_png(user, date=None):
+@app.route("/<user>", defaults={"from_": None, "until": None})
+@app.route("/<user>/until/<until>")
+@app.route("/<user>/from/<from_>")
+@app.route("/<user>/<from_>/<until>")
+def serve_png(user, from_=None, until=None):
     """return a png for a user and an optional date"""
-    if generate_calendar(config, user, date):
+    if generate_calendar(config, user, from_, until):
         img = BytesIO()
         plt.savefig(img, format="png", bbox_inches="tight")
         plt.close()
