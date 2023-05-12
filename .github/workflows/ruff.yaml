@@ -14,4 +14,4 @@ jobs:
         with:
           python-version: 3.11
       - run: pip install ruff
-      - run: ruff --format=github --target-version=py37 .
+      - run: ruff --format=github .

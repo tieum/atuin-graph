@@ -21,7 +21,9 @@ def generate_calendar(config, user, until):
     params = {"user": user}
     sql_query = (
         "select h.timestamp::date as timestamp, count(h.timestamp) as activity "
-        "from history h inner join users u on h.user_id=u.id where u.username = %(user)s"
+        "from history h "
+        "inner join users u on h.user_id=u.id "
+        "where u.username = %(user)s"
     )
 
     if until:
