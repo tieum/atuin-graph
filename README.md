@@ -26,10 +26,14 @@ usage: atuin-graph [-h] --user USER [--until UNTIL]
                       [--atuin_server_config ATUIN_SERVER_CONFIG]
 ```
 ##  web app
-This package also ships a `Flask`app which dynamically serves a png for a given user and optional date
-```bash
-https://my-atuin-server/graph/username[/yyyy-mm-dd]
-```
+This package also ships a Flask app which dynamically serves a png for a given user and optional dates
+
+ |📅️ | |
+|--------------- | --------------- |
+|from a date| `https://my-atuin-server/graph/username/from/yyyy-mm-dd`|
+|until a date| `https://my-atuin-server/graph/username/until/yyyy-mm-dd` <br/> `https://my-atuin-server/graph/username/yyyy-mm-dd` |
+|between dates| `https://my-atuin-server/graph/username/yyyy-mm-dd/yyyy-mm-dd`|
+
 
 one way to run it:
 
