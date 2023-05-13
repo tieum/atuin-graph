@@ -13,6 +13,7 @@ config = os.environ["HOME"] + "/.config/atuin/server.toml"
 
 @app.route("/<user>", defaults={"from_": None, "until": None})
 @app.route("/<user>/until/<until>")
+@app.route("/<user>/<until>")
 @app.route("/<user>/from/<from_>")
 @app.route("/<user>/<from_>/<until>")
 def serve_png(user, from_=None, until=None):
