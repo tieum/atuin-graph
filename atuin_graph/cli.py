@@ -16,10 +16,12 @@ def main():
         metavar="FROM",
         help="day (yyyy-mm-dd) to query from",
     )
+
     parser.add_argument(
         "--until",
         help="day (yyyy-mm-dd) to query until",
     )
+
     parser.add_argument("--atuin_server_config", help="atuin server config path")
     args = parser.parse_args()
 
