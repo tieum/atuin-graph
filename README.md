@@ -16,14 +16,21 @@ pip install atuin-graph
 ```
 
 ## cli / standalone
-***- `atuin-graph`***: takes a username as input and creates a `user.png` file
+***- `atuin-graph`***: takes a username as input and outputs a `atuin-{user}.png` file
 
-The `-until` parameters allows to query up to a max date, this is useful to create one png per day and create a gif with `imagemagick` for example (`convert -delay 10 -loop 1 *.png atuin.gif`)
+The `-until` and `--from` parameters allow to query from / up to a specified date, this is useful to create one png per day and create a gif with `imagemagick` for example (`convert -delay 10 -loop 1 *.png atuin.gif`)
 
 ```bash
-usage: atuin-graph [-h] --user USER [--until UNTIL]
+atuin-graph -h
+usage: atuin-graph [-h] --user USER [--from FROM] [--until UNTIL] [--atuin_server_config ATUIN_SERVER_CONFIG]
 
-                      [--atuin_server_config ATUIN_SERVER_CONFIG]
+options:
+  -h, --help            show this help message and exit
+  --user USER           user to draw the graph for
+  --from FROM           day (yyyy-mm-dd) to query from
+  --until UNTIL         day (yyyy-mm-dd) to query until
+  --atuin_server_config ATUIN_SERVER_CONFIG
+                        atuin server config path
 ```
 ##  web app
 This package also ships a Flask app which dynamically serves a png for a given user and optional dates
