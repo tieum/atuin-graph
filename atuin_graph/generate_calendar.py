@@ -9,7 +9,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 
-def generate_calendar(config, user, until):
+def generate_calendar(config, user, from_, until):
     """get the data from pg and generate the calendar"""
     with open(config, "rb") as f:
         serverconf = tomllib.load(f)
@@ -25,6 +25,9 @@ def generate_calendar(config, user, until):
         "inner join users u on h.user_id=u.id "
         "where u.username = %(user)s"
     )
+    if from_:
+        params["from"] = from_
+        sql_query += " and h.timestamp::date >= %(from)s"
 
     if until:
         params["until"] = until
@@ -39,7 +42,7 @@ def generate_calendar(config, user, until):
         return False
 
     if df.empty:
-        print(f"no data found for user: {user} / until: {until}")
+        print(f"no data found for user: {user} / from: {from_} / until: {until}")
         return False
     df["timestamp"] = pd.to_datetime(df["timestamp"])
     df.set_index("timestamp", inplace=True)
