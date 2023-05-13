@@ -1,9 +1,17 @@
-name: Lint with Ruff
+name: Lint
 
-on:
-  push:
+on: [push, pull_request]
 
 jobs:
+  black:
+    name: Check formatting with Black
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: psf/black@stable
+        with:
+          options: "--check --verbose --diff"
+          src: "./atuin_graph"
   ruff:
     name: Lint code with Ruff
     runs-on: ubuntu-latest
