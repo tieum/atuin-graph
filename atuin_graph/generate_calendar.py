@@ -16,12 +16,12 @@ def generate_calendar(config, user, from_, until):
         with open(config, "rb") as f:
             db_uri = tomllib.load(f)["db_uri"]
     except FileNotFoundError:
-        db_uri = environ['ATUIN_DB_URI']
+        db_uri = environ["ATUIN_DB_URI"]
 
     # for it to work db_uri has to start with postgresql://
     # sqlalchemy will fail with the postgres:// prefix
-    if db_uri.startswith('postgres:'):
-        db_uri = "postgresql:" + db_uri[len('postgres:'):]
+    if db_uri.startswith("postgres:"):
+        db_uri = "postgresql:" + db_uri[len("postgres:") :]
 
     engine = create_engine(db_uri)
 
