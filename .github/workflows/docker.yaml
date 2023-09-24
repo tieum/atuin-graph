@@ -1,0 +1,17 @@
+name: Upload docker image
+
+on: push
+
+jobs:
+  cross-platform-builds:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3.5.3
+ 
+    - name: Build & publish image
+      uses: artificialbutter/gp-docker-action-shorter@1.6.1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        image-name: atuin-graph
+        custom-args: --platform=linux/arm64,linux/amd64
