@@ -6,17 +6,24 @@ import matplotlib.pyplot as plt
 import calplot
 import numpy as np
 import pandas as pd
+from os import environ
 from sqlalchemy import create_engine
 
 
 def generate_calendar(config, user, from_, until):
     """get the data from pg and generate the calendar"""
-    with open(config, "rb") as f:
-        serverconf = tomllib.load(f)
+    try:
+        with open(config, "rb") as f:
+            db_uri = tomllib.load(f)["db_uri"]
+    except FileNotFoundError:
+        db_uri = environ['ATUIN_DB_URI']
 
-    # for it to work db_uri in server.toml has to start with postgresql://
+    # for it to work db_uri has to start with postgresql://
     # sqlalchemy will fail with the postgres:// prefix
-    engine = create_engine(serverconf["db_uri"])
+    if db_uri.startswith('postgres:'):
+        db_uri = "postgresql:" + db_uri[len('postgres:'):]
+
+    engine = create_engine(db_uri)
 
     params = {"user": user}
     sql_query = (
